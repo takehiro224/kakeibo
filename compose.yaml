@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .devcontainer
+    volumes:
+      - .:/workspaces/kakeibo   # Mac の kakeibo フォルダを、コンテナの /workspaces/kakeibo に反映
+    command: sleep infinity     # 開発中は常駐させておく(VS Code が入るため)
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: ${POSTGRES_DB}
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:

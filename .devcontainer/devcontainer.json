@@ -1,0 +1,6 @@
+{
+  "name": "kakeibo",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/kakeibo"
+}
