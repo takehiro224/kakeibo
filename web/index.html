@@ -1,38 +1,97 @@
-<section>
-  <h2>記録する</h2>
-  <form>
-    <div>
-      <label for="recorded-on">日付</label>
-      <input type="date" id="recorded-on" name="recorded_on" required>
-    </div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイ家計簿</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>マイ家計簿</h1>
+  </header>
 
-    <fieldset>
-      <legend>区分</legend>
-      <label><input type="radio" name="kind" value="使ったお金" checked> 使ったお金</label>
-      <label><input type="radio" name="kind" value="入ったお金"> 入ったお金</label>
-    </fieldset>
+  <main>
+    <!-- 記録の入力欄 -->
+    <section>
+      <h2>記録する</h2>
+      <form>
+        <div class="form-row">
+          <label for="recorded-on">日付</label>
+          <input type="date" id="recorded-on" name="recorded_on" required>
+        </div>
 
-    <div>
-      <label for="category">カテゴリ</label>
-      <select id="category" name="category">
-        <option>食費</option>
-        <option>外食費</option>
-        <option>日用品</option>
-        <option>交通費</option>
-        <option>給与</option>
-      </select>
-    </div>
+        <fieldset class="form-row">
+          <legend>区分</legend>
+          <label><input type="radio" name="kind" value="使ったお金" checked> 使ったお金</label>
+          <label><input type="radio" name="kind" value="入ったお金"> 入ったお金</label>
+        </fieldset>
 
-    <div>
-      <label for="amount">金額</label>
-      <input type="number" id="amount" name="amount" min="1" required> 円
-    </div>
+        <div class="form-row">
+          <label for="category">カテゴリ</label>
+          <select id="category" name="category">
+            <option>食費</option>
+            <option>外食費</option>
+            <option>日用品</option>
+            <option>交通費</option>
+            <option>給与</option>
+          </select>
+        </div>
 
-    <div>
-      <label for="memo">メモ</label>
-      <input type="text" id="memo" name="memo" maxlength="100">
-    </div>
+        <div class="form-row">
+          <label for="amount">金額</label>
+          <input type="number" id="amount" name="amount" min="1" required> 円
+        </div>
 
-    <button type="submit">記録する</button>
-  </form>
-</section>
+        <div class="form-row">
+          <label for="memo">メモ</label>
+          <input type="text" id="memo" name="memo" maxlength="100">
+        </div>
+
+        <button type="submit">記録する</button>
+      </form>
+    </section>
+
+    <!-- 記録の一覧(ダミーデータ) -->
+    <section>
+      <h2>記録の一覧</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>区分</th>
+              <th>カテゴリ</th>
+              <th>金額</th>
+              <th>メモ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="expense">
+              <td>2027/05/18</td>
+              <td>使ったお金</td>
+              <td>食費</td>
+              <td class="amount">580</td>
+              <td>コンビニ 昼ごはん</td>
+            </tr>
+            <tr class="expense">
+              <td>2027/05/17</td>
+              <td>使ったお金</td>
+              <td>交通費</td>
+              <td class="amount">1,000</td>
+              <td></td>
+            </tr>
+            <tr class="income">
+              <td>2027/05/15</td>
+              <td>入ったお金</td>
+              <td>給与</td>
+              <td class="amount">190,000</td>
+              <td>ダミー</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

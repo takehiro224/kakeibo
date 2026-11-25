@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+header {
+  padding: 16px;
+  background-color: #4a90d9;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+section {
+  margin: 24px 0;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+/* 入力欄 */
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  width: 6em;
+}
+
+fieldset {
+  margin: 0 0 12px;
+  border: none;
+  padding: 0;
+}
+
+button {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a90d9;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+/* 一覧 */
+.table-wrapper {
+  overflow-x: auto;              /* 表がはみ出すときは、表の部分だけ横にスクロールする */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+td.amount {
+  text-align: right;
+}
+
+tr.income td {
+  color: #2e7d32;
+}
+
+tr.expense td {
+  color: #c62828;
+}
+
+/* スマホの幅(600px以下)のときだけ使う */
+@media (max-width: 600px) {
+  main {
+    padding: 0 12px;
+  }
+
+  section {
+    margin: 16px 0;
+    padding: 12px;
+  }
+
+  /* 入力欄:ラベルを上の行に、入力欄を下の行に横幅いっぱいで置く */
+  .form-row {
+    flex-wrap: wrap;             /* 入りきらなければ、次の行に折り返す */
+    gap: 4px 12px;               /* 上下の間隔 4px、左右の間隔 12px */
+  }
+
+  .form-row > label:first-child {
+    width: 100%;                 /* ラベルだけで1行を使う → 入力欄は次の行へ */
+  }
+
+  .form-row input[type="date"],
+  .form-row input[type="number"],
+  .form-row input[type="text"],
+  .form-row select {
+    flex: 1;                     /* 残りの幅いっぱいに広げる(金額の「円」は右に残る) */
+    min-width: 0;
+    padding: 8px;
+  }
+
+  /* 指で押しやすく、入力時に画面が拡大されないようにする */
+  input,
+  select,
+  button {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* 表:セルの中で折り返さず、はみ出した分は .table-wrapper で横にスクロールする */
+  th,
+  td {
+    padding: 8px;
+    white-space: nowrap;
+  }
+}
