@@ -2,5 +2,7 @@
   "name": "kakeibo",
   "dockerComposeFile": "../compose.yaml",
   "service": "app",
-  "workspaceFolder": "/workspaces/kakeibo"
+  "workspaceFolder": "/workspaces/kakeibo",
+  "forwardPorts": [3002],
+  "postCreateCommand": "pnpm install"
 }
